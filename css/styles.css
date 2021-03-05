@@ -1,0 +1,281 @@
+body{
+  margin: 0;
+  background-image: url("../img/gyoza01.jpg");
+  background-size: cover;
+  color: white;
+  font-family: 'Meiryo','Hiragino Kaku Gothic Pro', sans-serif;
+}
+h1{
+  background-color: rgba(0,0,0,0.75);
+  text-align: center;
+  margin: 0;
+  font-size: 40px;
+  font-family: 'HG行書体','YuMin-Extrabold' , serif;
+}
+/* ================================== */
+/* 開始文字 */
+/* ================================== */
+#startStr{
+  font-size: 50px;
+  font-weight: bold;
+  color: black;
+  text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff, 0px 1px 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff, 1px 0 0 #fff;
+  text-align: center;
+  margin-top: 40px;
+  user-select: none;
+}
+#startStr.blink{ animation: blink 1.5s linear infinite; }
+@keyframes blink{
+  0%, 100%{ opacity: 1;}
+  50% { opacity: 0; } 
+}
+/* ================================== */
+/* プレイ時間選択肢 */
+/* ================================== */
+.timeLimitChoices{
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+.timeLimitChoices div:first-child{ 
+  font-size: 25px;
+  height: 70px;
+  line-height: 70px;
+}
+.timeLimitChoices .btn {
+  display: inline-block;
+  width: 150px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 35px;
+  user-select: none;
+  position: relative;
+  margin: 0 10px;
+  border: 3.5px solid #FFF;
+  border-radius: 3px;
+  letter-spacing: 4px;
+  transition: background-color .2s;
+  cursor: pointer;
+}
+.timeLimitChoices .btn.active { 
+  background-color: rgba(255, 92, 51, 0.9);
+}
+.timeLimitChoices .btn:not(.timeLimitChoices .btn.active):hover{
+  background-color: rgba(255, 92, 51, 0.2); 
+}
+.timeLimitChoices .btn span {
+  display: block;
+  position: absolute;
+  background-color: rgb(255, 92, 51);
+  opacity: 0;
+  border-radius: 6px;
+  top: 0%; left: 0; width: 100%; height: 35px;
+  font-size: 17px;
+  line-height: 35px;
+  letter-spacing: 2px;
+  z-index: -1;
+  transition: .4s;
+}
+.timeLimitChoices .btn:hover span  { 
+  transform: translateY(64px);
+  opacity: 1;
+}
+/* ================================== */
+/* プレイウインドウ */
+/* ================================== */
+#playWindow {
+  width: 650px;
+  height: 400px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  background: #333333;
+  border: 2px solid white;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 5;
+  font-size: 22px;
+  font-weight: bold;
+}
+#playWindow ul{
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+#playWindow ul.playingContents {
+  margin: 75px 0 0;  
+}
+#playWindow ul.resultContents {
+  margin: 35px 0 0;
+}
+#playWindow ul li+li{
+  margin-top: 25px;
+}
+#playWindow #targetKana{ 
+  font-size: 30px; 
+}
+#playWindow #targetRomaji{ 
+  font-family: 'Monaco',monospace;
+  font-size: 26px;
+  letter-spacing: 0.15em; 
+}
+#playWindow #playingScore{
+  margin-top: 75px;  
+}
+#playWindow #timeLimit,#playWindow #playingScore{  
+  font-weight: normal;
+}
+.textShining { animation: textShining 0.7s ; }
+@keyframes textShining{
+  0%, 100% { text-shadow: none; color: white; }
+  50% { text-shadow: 0 0 12px #FF0; color: lightgoldenrodyellow; }
+}
+.textDark { animation: textDark 0.3s ; }
+@keyframes textDark{
+  0%, 100% { text-shadow: none; }
+  50% { text-shadow: 0 0 12px darkmagenta; color:darkred }
+}
+#playWindow #backBtn{
+  width: 200px;
+  background-color: rgb(255, 92, 51);  
+  box-shadow: 0 5px 0 brown;
+  border-radius: 4px;
+  padding: 5px;
+  cursor: pointer;
+  user-select: none;
+  margin: 20px auto 0;
+}
+#scoreRegist{
+  color: #FF0;
+  height: 33.333px;
+}
+input#userName {
+  font-size: 19px;
+  border-radius: 3px;
+  padding: 4px 5px;
+}
+::placeholder{
+  color: #a8a7a7;
+  font-size: 15px;
+}
+#playWindow #backBtn:active{ 
+  box-shadow: 0 1px 0 brown; 
+  position: relative; 
+  top: 4px; 
+}
+#playWindow #setGoStr{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 80px;
+  color: rgb(255, 92, 51);
+  text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff, 0px 1px 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff, 1px 0 0 #fff;
+  white-space: nowrap;
+}
+#setGoStr.buruburu{  animation: buruburu 1s ; }
+@keyframes buruburu{
+  0%   { transform: translate(-50%, -50%) rotateZ(0deg);}
+  24%  { transform: translate(-48%,-40%) rotateZ(-3deg) scale(0.9,1.1);}
+  26%  { transform: translate(-50%, -50%) rotateZ(0deg) scale(1, 1.1);}
+  32%  { transform: translate(-50%, -48%) rotateZ(-2deg);}
+  33%  { transform: translate(-50%, -50%) rotateZ(0deg);}
+  36%  { transform: translate(-50%, -48%) rotateZ(-2deg);}
+  37%  { transform: translate(-50%, -50%) rotateZ(0deg);}
+  100% { transform: translate(-50%, -50%) rotateZ(0deg);}
+}
+#setGoStr.biyon{ animation: biyon 1s; }
+@keyframes biyon{
+  0%, 100% {}
+  50% {transform: translate(-50%, -50%) scale(1,2);} 
+}
+/* ================================== */
+/* ゲーム説明div */
+/* ================================== */
+.desc{
+  width: 515px;
+  margin: 20px auto 0;
+}
+.desc > div{
+  text-align: center;
+  background: rgba(0,0,0,0.8);
+  padding: 2px 0;
+  border-radius: 3px;
+}
+.desc ul{    
+  margin: 0;
+  padding: 8px 8px 8px 32px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 3px;
+  list-style-image: url(../img/beer.png);
+  font-size: 15px;
+}
+.desc li{    
+  line-height: 1.7em;
+  padding-left: 3px;
+}
+.desc li+li{
+  margin-top: 8px;
+}
+/* ================================== */
+/* ランキング */
+/* ================================== */
+#ranking{  
+  width: 515px;
+  margin: 20px auto 0;
+}
+#ranking caption{
+  background: rgba(0,0,0,0.8);
+  border-radius: 3px;
+  padding: 2px 0;
+}
+#ranking tr{
+  background: rgba(0,0,0,0.6);    
+}
+#ranking td{
+  border-radius: 3px;
+  padding: 0 10px;
+}
+#ranking td:first-child{
+  text-align: center;
+}
+#ranking td:last-child{
+  text-align: right;
+}
+/* ================================== */
+@media (max-height:870px) {
+  .descRankingContainer{
+    display: flex;
+    justify-content: center;
+  }
+  .desc{
+    width: 445px;
+    margin: 5px 0 0;
+  }
+  #ranking{
+    width: 320px;
+    margin: 5px 0 0 10px;
+  }
+}
+@media (min-height:640px) and (max-height:869px) {
+  .desc{
+    margin: 30px 0 0;
+  }
+  #ranking{
+    margin: 30px 0 0 10px;
+  }
+}
+/* ================================== */
+#mask {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;  bottom: 0;  right: 0;  left: 0;
+  z-index: 2;  
+}
+.hidden{ 
+  display: none;
+}
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>スーパー餃子タイピング</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.ico">
+  <meta name="description" content="餃子にまつわる文章でタイピング練習ができるゲームです。">
+</head>
+<body>
+  <h1>スーパー餃子タイピング</h1>
+  <!-- プレイ時間選択 -->
+  <div class="timeLimitChoices">
+    <div>プレイ時間を選んでください</div>
+    <div data-playTime ="30000" class="btn">30秒<span>サクっと遊ぶ</span></div>
+    <div data-playTime ="60000" class="btn active">60秒<span>それなりに遊ぶ</span></div>
+    <div data-playTime ="90000" class="btn">90秒<span>餃子を極める</span></div>
+  </div>
+  <!-- スタートメッセージ -->
+  <div id = "startStr" class="blink">Space キーでスタート</div>
+  <!-- ゲーム説明 ＆ ランキング コンテナ-->
+  <div class="descRankingContainer">
+    <!-- ゲーム説明 -->
+    <div class="desc">
+      <div>ゲーム説明</div>
+      <ul>
+        <li>餃子にまつわる文章でタイピング練習ができるゲームです</li>
+        <li>餃子愛を込めてタイピングするとLOVEスコアが加算され、<br>愛が途切れると減算されます</li>
+        <li>表示キー以外でも、お好みの打ち方でタイピング可能です</li>
+        <li>プレイ中にEsc keyでリトライできます</li>
+        <li>ゲームプレイ中の空腹感については責任を負いかねます</li>
+      </ul>
+    </div>
+    <!-- ランキング -->
+    <table id="ranking">
+      <caption>餃子愛ランキング（ 単位：love ）</caption>
+    </table>
+  </div>
+  
+  <!-- プレイウィンドウ -->  
+  <div id="playWindow" class="hidden">
+    <span id="setGoStr">よーい</span>    
+    <ul class="playingContents hidden">
+      <li id="targetKana"></li>
+      <li id="targetRomaji"></li>
+      <li id="playingScore"></li>
+      <li id="timeLimit"></li>
+    </ul>
+    <ul class="resultContents hidden">
+      <li id="missType"></li>
+      <li id="totalType"></li>
+      <li id="resultScore"></li>
+      <li id="rank"></li>
+      <li id="scoreRegist">
+        <span></span>
+        <input type="text" size="22" maxlength = "12" id="userName" placeholder="名前入力でスコアを登録しよう！">
+      </li>
+      <li id="backBtn"></li>
+    </ul>
+  </div>
+  <!-- プレイ中マスク -->
+  <div id="mask" class="hidden"></div>
+  <!-- サウンド-->
+  <audio id="startSound1" src="sound/start1.mp3"></audio>
+  <audio id="startSound2" src="sound/start2.mp3"></audio>
+  <audio id="correctSound" src="sound/correct.mp3"></audio>
+  <audio id="missSound" src="sound/miss.mp3"></audio>
+  <audio id="nextSound" src="sound/nextWord.mp3"></audio>
+  <audio id="finishSound" src="sound/finish.mp3"></audio>
+  <!-- スクリプト -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script> 
+  <script src="js/main.js"></script>
+</body>
+</html>
